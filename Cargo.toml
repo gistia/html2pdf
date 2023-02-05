@@ -1,29 +1,26 @@
 [package]
-name = "html2pdf"
-version = "0.6.0"
-edition = "2018"
 authors = ["Igor Laborie <igor@monkeypatch.io>"]
-description = "Convert HTML to PDF using a Headless Chrome browser"
-license = "Apache-2.0 OR MIT"
-repository = "https://github.com/ilaborie/html2pdf"
-documentation = "https://docs.rs/html2pdf"
-keywords = ["cli", "pdf"]
 categories = ["command-line-utilities", "encoding"]
+description = "Convert HTML to PDF using a Headless Chrome browser"
+documentation = "https://docs.rs/html2pdf"
+edition = "2018"
+keywords = ["cli", "pdf"]
+license = "Apache-2.0 OR MIT"
+name = "html2pdf"
+repository = "https://github.com/ilaborie/html2pdf"
+version = "0.6.0"
 
 [dependencies]
-headless_chrome = "1.0"
-
-clap = { version = "4.1", features = ["derive"] }
-
-humantime = "2.1"
-
 anyhow = "1.0"
-thiserror = "1.0"
-
+clap = {version = "4.1", features = ["derive"]}
+dunce = "1.0"
+headless_chrome = "1.0"
+humantime = "2.1"
 log = "0.4"
 pretty_env_logger = "0.4"
-dunce = "1.0"
+thiserror = "1.0"
+urlencoding = "2.1.2"
 
 [dev-dependencies]
-rstest = "0.16"
 assert2 = "0.3"
+rstest = "0.16"

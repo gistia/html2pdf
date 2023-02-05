@@ -20,6 +20,7 @@ use headless_chrome::{Browser, LaunchOptionsBuilder};
 use humantime::format_duration;
 use log::{debug, info};
 use thiserror::Error;
+use urlencoding::encode;
 
 mod cli;
 
@@ -115,6 +116,26 @@ where
     fs::write(output.as_ref(), local_pdf)?;
 
     Ok(())
+}
+
+/// Run HTML to PDF with `headless_chrome`, returning the PDF as a byte array
+///
+/// # Panics
+/// Sorry, no error handling, just panic
+///
+/// # Errors
+///
+/// Could fail if there is I/O or Chrome headless issue
+pub fn html_to_pdf_bytes(
+    input: &str,
+    pdf_options: PrintToPdfOptions,
+    wait: Option<Duration>,
+) -> Result<Vec<u8>, Error> {
+    let encoded = encode(input);
+    let data = format!("data:text/html,{encoded}");
+    let pdf_bytes = print_to_pdf(&data, pdf_options, wait)?;
+
+    Ok(pdf_bytes)
 }
 
 fn print_to_pdf(
