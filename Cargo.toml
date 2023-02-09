@@ -14,7 +14,7 @@ version = "0.6.0"
 anyhow = "1.0"
 clap = {version = "4.1", features = ["derive"]}
 dunce = "1.0"
-headless_chrome = {git = "https://github.com/gistia/gistia_headless_chrome"}
+headless_chrome = {git = "https://github.com/gistia/gistia_headless_chrome", features=["fetch"]}
 humantime = "2.1"
 log = "0.4"
 pretty_env_logger = "0.4"
